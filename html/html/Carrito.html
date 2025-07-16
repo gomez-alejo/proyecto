@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTienda - Navbar Compacto</title>
+    <title>Carrito-Launchix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/html/css/style.css">
     <link rel="stylesheet" href="/html/css/navbar.css">
+    <link rel="stylesheet" href="/html/css/footer.css">
+
 </head>
 <body class="bg-gray-50">
     <!-- Navbar compacto -->
@@ -17,8 +19,8 @@
                 <!-- Logo -->
                 <div class="text-xl font-bold">
                     <a href="/html/index.html" class="logo flex items-center space-x-2">
-                        <i class="fas fa-shopping-bag text-2xl bounce-icon"></i>
-                        <span>MiTienda</span>
+                        <i class="fas fa-shopping-cart text-2xl bounce-icon"></i>
+                        <span>launchix</span>
                     </a>
                 </div>
 
@@ -72,7 +74,7 @@
                         <div id="profileModal" class="profile-modal absolute right-0 bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
                             <ul>
                                 <li class="mb-2">
-                                    <a href="/html/perfil.html" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                    <a href="" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
                                         <i class="fas fa-user-circle mr-2"></i>Mi Perfil
                                     </a>
                                 </li>
@@ -188,6 +190,179 @@
         </div>
     </nav>
 
+    <div class="container mx-auto px-4 py-8">
+        <!-- Empty Cart Message -->
+        <div id="empty-cart" class="text-center py-16">
+            <svg class="w-24 h-24 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6H19"></path>
+            </svg>
+            <h2 class="text-2xl font-bold text-gray-600 mb-4">Tu carrito está vacío</h2>
+            <p class="text-gray-500 mb-6">¡Agrega algunos productos para comenzar a comprar!</p>
+            <button onclick="addSampleProducts()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition-colors duration-200">
+                Agregar productos de ejemplo
+            </button>
+        </div>
+
+        <!-- Cart Content -->
+        <div id="cart-content" class="hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Productos en tu carrito</h2>
+                        <div id="cart-items" class="space-y-4">
+                            <!-- Cart items will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Resumen del pedido</h3>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal:</span>
+                                <span id="subtotal" class="font-semibold">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Envío:</span>
+                                <span id="shipping" class="font-semibold">$5.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Impuestos:</span>
+                                <span id="taxes" class="font-semibold">$0.00</span>
+                            </div>
+                            <hr class="my-4">
+                            <div class="flex justify-between text-lg font-bold">
+                                <span>Total:</span>
+                                <span id="total" class="text-primary">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <button onclick="proceedToCheckout()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors duration-200 font-semibold">
+                                Proceder al pago
+                            </button>
+                            <button onclick="continueShopping()" class="w-full border-2 border-primary text-primary py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-200">
+                                Continuar comprando
+                            </button>
+                        </div>
+
+                        <!-- Promo Code -->
+                        <div class="mt-6 pt-6 border-t">
+                            <h4 class="font-semibold text-gray-800 mb-3">Código de descuento</h4>
+                            <div class="flex">
+                                <input type="text" id="promo-code" placeholder="Ingresa tu código" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <button onclick="applyPromoCode()" class="bg-accent text-white px-4 py-2 rounded-r-lg hover:bg-primary transition-colors duration-200">
+                                    Aplicar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4 bounce-in">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">¡Operación exitosa!</h3>
+                <p id="success-message" class="text-gray-600 mb-6"></p>
+                <button onclick="closeModal()" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors duration-200">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Información de la empresa -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shopping-bag mr-2"></i>
+                        MiTienda
+                    </h3>
+                    <p class="text-gray-200 mb-4">
+                        Tu tienda de confianza con los mejores productos y el mejor servicio al cliente.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Inicio</a></li>
+                        <li><a href="#" class="footer-link">Productos</a></li>
+                        <li><a href="#" class="footer-link">Servicios</a></li>
+                        <li><a href="#" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categorías -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categorías</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Electrónicos</a></li>
+                        <li><a href="#" class="footer-link">Ropa</a></li>
+                        <li><a href="#" class="footer-link">Hogar</a></li>
+                        <li><a href="#" class="footer-link">Deportes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <div class="space-y-2">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Calle Principal, Ciudad
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +57 300 123 4567
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@mitienda.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p>&copy; 2024 MiTienda. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="/html/javascript/navbar.js"></script>
+    <script src="/html/javascript/carrito.js"></script>
+    <script src="/html/javascript/footer.js"></script>
 </body>
 </html>

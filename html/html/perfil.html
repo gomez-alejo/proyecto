@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil-Launchix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/html/imagenes/logo launchix.png" sizes="32x32">
+    <link rel="stylesheet" href="/html/css/style.css">
+    <link rel="stylesheet" href="/html/css/navbar.css">
+    <link rel="stylesheet" href="/html/css/perfil.css">
+    <link rel="stylesheet" href="/html/css/footer.css">
+
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar compacto -->
+    <nav class="navbar text-white p-3 sticky top-0 z-50">
+        <div class="container mx-auto">
+            <div class="navbar-container">
+                    <!-- Logo -->
+                <div class="text-xl font-bold">
+                    <a href="/html/index.html" class="logo flex items-center space-x-2">
+                        <i class="fas fa-shopping-cart text-2xl bounce-icon"></i>
+                        <span>launchix</span>
+                    </a>
+                </div>
+
+
+                <!-- Enlaces principales (ocultos en móvil) -->
+                <div class="nav-main-links">
+                    <a href="/html/Home.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                        <i class="fas fa-star"></i> Más Vendidos
+                    </a>
+                    <a href="/html/Productos.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                        <i class="fas fa-box"></i> Productos
+                    </a>
+                    <a href="/html/Servicios.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                        <i class="fas fa-concierge-bell"></i> Servicios
+                    </a>
+                    <div class="relative" id="categoriesContainer">
+                        <button id="categoriesButton" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-list"></i> Categorías
+                        </button>
+                        <div id="categoriesModal" class="modal absolute bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
+                            <ul>
+                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Electrónicos</a></li>
+                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Ropa</a></li>
+                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Hogar</a></li>
+                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Deportes</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra de búsqueda compacta (oculta en móvil) -->
+                <div class="search-compact">
+                    <form class="flex items-center search-container">
+                        <input type="text" id="searchInput" placeholder="Buscar productos..."
+                            class="search-input px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary w-full text-sm">
+                        <button type="submit" class="search-btn bg-primary hover:bg-secondary text-white font-bold py-2 px-3 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Enlaces de usuario (ocultos en móvil) -->
+                <div class="nav-user-links">
+                    <a href="/html/sesion.html" class="auth-btn bg-lighter hover:bg-light text-primary font-semibold py-2 px-3 rounded-lg transition-all duration-300 text-sm">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </a>
+                    
+                    <div class="relative" id="profileContainer">
+                        <button id="profileButton" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-user"></i> Perfil
+                        </button>
+                        <div id="profileModal" class="profile-modal absolute right-0 bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
+                            <ul>
+                                <li class="mb-2">
+                                    <a href="/html/perfil.html" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                        <i class="fas fa-user-circle mr-2"></i>Mi Perfil
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                        <i class="fas fa-cog mr-2"></i>Configuraciones
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="/html/Carrito.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                        <i class="fas fa-shopping-cart"></i> Carrito
+                    </a>
+                    
+                    <a href="#" class="nav-link hover:text-lighter transition-colors duration-300">
+                        <i class="fas fa-question-circle"></i> Ayuda
+                    </a>
+                </div>
+
+                <!-- Botón de menú móvil -->
+                <button id="mobileMenuBtn" class="lg:hidden nav-link">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="mobile-menu hidden lg:hidden mt-4 p-4 rounded-lg">
+            <div class="flex flex-col space-y-2">
+                <!-- Barra de búsqueda móvil -->
+                <div class="border-b border-white/20 pb-3 mb-3">
+                    <form class="flex items-center">
+                        <input type="text" placeholder="Buscar productos..." class="flex-1 px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none">
+                        <button type="submit" class="bg-primary hover:bg-secondary text-white py-2 px-3 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Enlaces principales móvil -->
+                <a href="#" class="mobile-menu-link text-white">
+                    <i class="fas fa-star mr-2"></i> Más Vendidos
+                </a>
+                <a href="/html/Productos.html" class="mobile-menu-link text-white">
+                    <i class="fas fa-box mr-2"></i> Productos
+                </a>
+                <a href="#" class="mobile-menu-link text-white">
+                    <i class="fas fa-concierge-bell mr-2"></i> Servicios
+                </a>
+                
+                <!-- Categorías móvil con submenu -->
+                <div class="mobile-category-container">
+                    <button id="mobileCategoriesBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
+                        <span><i class="fas fa-list mr-2"></i> Categorías</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300" id="mobileCategoriesIcon"></i>
+                    </button>
+                    <div id="mobileCategoriesMenu" class="hidden ml-4 mt-2 space-y-2">
+                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                            <i class="fas fa-laptop mr-2"></i> Electrónicos
+                        </a>
+                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                            <i class="fas fa-tshirt mr-2"></i> Ropa
+                        </a>
+                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                            <i class="fas fa-home mr-2"></i> Hogar
+                        </a>
+                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                            <i class="fas fa-running mr-2"></i> Deportes
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <div class="border-t border-white/20 pt-3 mt-3">
+                    <a href="#" class="mobile-menu-link text-white">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
+                    </a>
+                    
+                    <!-- Perfil móvil con submenu -->
+                    <div class="mobile-profile-container">
+                        <button id="mobileProfileBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
+                            <span><i class="fas fa-user mr-2"></i> Perfil</span>
+                            <i class="fas fa-chevron-down transition-transform duration-300" id="mobileProfileIcon"></i>
+                        </button>
+                        <div id="mobileProfileMenu" class="hidden ml-4 mt-2 space-y-2">
+                            <a href="" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                <i class="fas fa-user-circle mr-2"></i> Mi Perfil
+                            </a>
+                            <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                <i class="fas fa-cog mr-2"></i> Configuraciones
+                            </a>
+                            <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="/html/Carrito.html" class="mobile-menu-link text-white">
+                        <i class="fas fa-shopping-cart mr-2"></i> Carrito
+                    </a>
+                    <a href="#" class="mobile-menu-link text-white">
+                        <i class="fas fa-question-circle mr-2"></i> Ayuda
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+        <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex gap-8">
+            <!-- Sidebar -->
+            <aside class="w-80 bg-white rounded-lg shadow-lg sticky-aside filter-sidebar p-6">
+                <div class="text-center mb-8">
+                    <div class="profile-avatar rounded-full bg-gray-200 mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">Juan Pérez</h2>
+                    <p class="text-gray-600">juan.perez@email.com</p>
+                </div>
+
+                <nav class="space-y-2">
+                    <a href="#" class="menu-item active-menu flex items-center p-3 rounded-lg font-medium" onclick="showSection('profile')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                        Mi Perfil
+                    </a>
+                    <a href="#" class="menu-item flex items-center p-3 rounded-lg font-medium" onclick="showSection('orders')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5z" clip-rule="evenodd"></path>
+                        </svg>
+                        Tus Pedidos
+                    </a>
+                    <a href="#" class="menu-item flex items-center p-3 rounded-lg font-medium" onclick="showSection('reviews')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
+                        </svg>
+                        Tus Reseñas
+                    </a>
+                    <a href="#" class="menu-item flex items-center p-3 rounded-lg font-medium" onclick="showSection('followed')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                        </svg>
+                        Tiendas Seguidas
+                    </a>
+                    <a href="#" class="menu-item flex items-center p-3 rounded-lg font-medium" onclick="showSection('history')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                        </svg>
+                        Historial de Navegación
+                    </a>
+                    <a href="#" class="menu-item flex items-center p-3 rounded-lg font-medium" onclick="showSection('settings')">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                        </svg>
+                        Configuraciones
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1">
+                <!-- Profile Section -->
+                <div id="profile-section" class="section active">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="flex items-center justify-between mb-8">
+                            <h1 class="text-3xl font-bold text-gray-800">Mi Perfil</h1>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-sm text-gray-500">Última actualización: 15 Jul 2025</span>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Notification Area -->
+                        <div id="notification" class="notification hidden">
+                            <p id="notification-text"></p>
+                        </div>
+
+                        <!-- Profile Form -->
+                        <form id="profileForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Personal Information -->
+                                <div class="space-y-6">
+                                    <h2 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                        Información Personal
+                                    </h2>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Nombre Completo
+                                        </label>
+                                        <input type="text" id="fullName" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="Juan Pérez" placeholder="Ingresa tu nombre completo">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Nombre de Usuario
+                                        </label>
+                                        <input type="text" id="username" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="juanperez123" placeholder="Ingresa tu nombre de usuario">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Correo Electrónico
+                                        </label>
+                                        <input type="email" id="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="juan.perez@email.com" placeholder="Ingresa tu correo electrónico">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Teléfono
+                                        </label>
+                                        <input type="tel" id="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="+57 300 123 4567" placeholder="Ingresa tu número de teléfono">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Fecha de Nacimiento
+                                        </label>
+                                        <input type="date" id="birthDate" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="1990-05-15">
+                                    </div>
+                                </div>
+
+                                <!-- Address Information -->
+                                <div class="space-y-6">
+                                    <h2 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                        Dirección
+                                    </h2>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Dirección Principal
+                                        </label>
+                                        <input type="text" id="address" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                               value="Calle 123 #45-67" placeholder="Ingresa tu dirección">
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Ciudad
+                                            </label>
+                                            <input type="text" id="city" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                                   value="Popayán" placeholder="Ciudad">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Código Postal
+                                            </label>
+                                            <input type="text" id="zipCode" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                                   value="190001" placeholder="Código postal">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Departamento
+                                        </label>
+                                        <select id="department" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none">
+                                            <option value="cauca" selected>Cauca</option>
+                                            <option value="bogota">Bogotá D.C.</option>
+                                            <option value="antioquia">Antioquia</option>
+                                            <option value="valle">Valle del Cauca</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Change Password Section -->
+                                    <div class="mt-8">
+                                        <h2 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+                                            Cambiar Contraseña
+                                        </h2>
+                                        
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    Contraseña Actual
+                                                </label>
+                                                <input type="password" id="currentPassword" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                                       placeholder="Ingresa tu contraseña actual">
+                                            </div>
+                                            
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    Nueva Contraseña
+                                                </label>
+                                                <input type="password" id="newPassword" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                                       placeholder="Ingresa tu nueva contraseña">
+                                            </div>
+                                            
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    Confirmar Nueva Contraseña
+                                                </label>
+                                                <input type="password" id="confirmPassword" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" 
+                                                       placeholder="Confirma tu nueva contraseña">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+                                <button type="button" class="btn-secondary px-6 py-3 rounded-lg font-medium">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn-primary text-white px-6 py-3 rounded-lg font-medium">
+                                    Guardar Cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Other sections (hidden by default) -->
+                <div id="orders-section" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Tus Pedidos</h1>
+                        <p class="text-gray-600">Aquí verás todos tus pedidos realizados.</p>
+                    </div>
+                </div>
+
+                <div id="reviews-section" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Tus Reseñas</h1>
+                        <p class="text-gray-600">Aquí verás todas las reseñas que has realizado.</p>
+                    </div>
+                </div>
+
+                <div id="followed-section" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Tiendas Seguidas</h1>
+                        <p class="text-gray-600">Aquí verás todas las tiendas que sigues.</p>
+                    </div>
+                </div>
+
+                <div id="history-section" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Historial de Navegación</h1>
+                        <p class="text-gray-600">Aquí verás tu historial de navegación.</p>
+                    </div>
+                </div>
+
+                <div id="settings-section" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Configuraciones</h1>
+                        <p class="text-gray-600">Aquí podrás configurar tu cuenta.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Información de la empresa -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shopping-bag mr-2"></i>
+                        MiTienda
+                    </h3>
+                    <p class="text-gray-200 mb-4">
+                        Tu tienda de confianza con los mejores productos y el mejor servicio al cliente.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon text-2xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Inicio</a></li>
+                        <li><a href="#" class="footer-link">Productos</a></li>
+                        <li><a href="#" class="footer-link">Servicios</a></li>
+                        <li><a href="#" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categorías -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categorías</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Electrónicos</a></li>
+                        <li><a href="#" class="footer-link">Ropa</a></li>
+                        <li><a href="#" class="footer-link">Hogar</a></li>
+                        <li><a href="#" class="footer-link">Deportes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <div class="space-y-2">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Calle Principal, Ciudad
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +57 300 123 4567
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@mitienda.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p>&copy; 2024 MiTienda. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/html/javascript/footer.js"></script>
+    <script src="/html/javascript/navbar.js"></script>
+    <script src="/html/javascript/perfil.js"></script>
+</body>
+</html>
