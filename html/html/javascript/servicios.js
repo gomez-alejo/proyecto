@@ -7,7 +7,7 @@ const services = [
         rating: 4.8,
         reviews: 156,
         description: "Deliciosas pizzas artesanales con ingredientes frescos. Servicio a domicilio disponible.",
-        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop",
+        image: "https://i.pinimg.com/736x/c3/15/f2/c315f238994440a1342f971546a2ce71.jpg",
         emoji: "🍕"
     },
     {
@@ -17,7 +17,7 @@ const services = [
         rating: 4.5,
         reviews: 89,
         description: "Servicio completo de lavado y encerado. Cuidamos tu vehículo como si fuera nuestro.",
-        image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&h=200&fit=crop",
+        image: "https://i.pinimg.com/736x/4c/9e/b5/4c9eb52e97e1f2b7a84b6f17259435fa.jpg",
         emoji: "🚗"
     },
     {
@@ -37,7 +37,7 @@ const services = [
         rating: 4.6,
         reviews: 78,
         description: "Medicamentos, productos de cuidado personal y atención farmacéutica profesional.",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=300&h=200&fit=crop",
+        image: "https://i.pinimg.com/736x/aa/ef/09/aaef09fcbf62ccb206cadcfa19faed8f.jpg",
         emoji: "💊"
     },
     {
