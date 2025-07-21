@@ -1,282 +1,369 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>launchix-Ecommerce</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="/html/imagenes/logo launchix.png" sizes="32x32">
-    <link rel="stylesheet" href="/html/css/style.css">
-    <link rel="stylesheet" href="/html/css/navbar.css">
-    <link rel="stylesheet" href="/html/css/footer.css">
 
-</head>
-<body class="bg-gray-50">
-    <!-- Navbar compacto -->
-    <nav class="navbar text-white p-3 sticky top-0 z-50">
-        <div class="container mx-auto">
-            <div class="navbar-container">
-                    <!-- Logo -->
-                <div class="text-xl font-bold">
-                    <a href="/html/index.html" class="logo flex items-center space-x-2">
-                        <i class="fas fa-shopping-cart text-2xl bounce-icon"></i>
-                        <span>launchix</span>
-                    </a>
-                </div>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>launchix-Ecommerce</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="/html/imagenes/logo launchix.png" sizes="32x32">
+        <link rel="stylesheet" href="/html/css/style.css">
+        <link rel="stylesheet" href="/html/css/navbar.css">
+        <link rel="stylesheet" href="/html/css/footer.css">
+        
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#dc2626',
+                            secondary: '#f87171',
+                            lighter: '#fef2f2',
+                            light: '#fecaca'
+                        }
+                    }
+                }
+            }
+        </script>
+
+    </head>
+    <body class="bg-gray-50">
+        <!-- Navbar compacto -->
+        <nav class="navbar text-white p-3 sticky top-0 z-50">
+            <div class="container mx-auto">
+                <div class="navbar-container">
+                        <!-- Logo -->
+                    <div class="text-xl font-bold">
+                        <a href="/html/index.html" class="logo flex items-center space-x-2">
+                            <i class="fas fa-shopping-cart text-2xl bounce-icon"></i>
+                            <span>launchix</span>
+                        </a>
+                    </div>
 
 
-                <!-- Enlaces principales (ocultos en móvil) -->
-                <div class="nav-main-links">
-                    <a href="/html/Home.html" class="nav-link hover:text-lighter transition-colors duration-300">
-                        <i class="fas fa-star"></i> Más Vendidos
-                    </a>
-                    <a href="/html/Productos.html" class="nav-link hover:text-lighter transition-colors duration-300">
-                        <i class="fas fa-box"></i> Productos
-                    </a>
-                    <a href="/html/Servicios.html" class="nav-link hover:text-lighter transition-colors duration-300">
-                        <i class="fas fa-concierge-bell"></i> Servicios
-                    </a>
-                    <div class="relative" id="categoriesContainer">
-                        <button id="categoriesButton" class="nav-link hover:text-lighter transition-colors duration-300">
-                            <i class="fas fa-list"></i> Categorías
-                        </button>
-                        <div id="categoriesModal" class="modal absolute bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
-                            <ul>
-                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Electrónicos</a></li>
-                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Ropa</a></li>
-                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Hogar</a></li>
-                                <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Deportes</a></li>
-                            </ul>
+                    <!-- Enlaces principales (ocultos en móvil) -->
+                    <div class="nav-main-links">
+                        <a href="/html/Home.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-star"></i> Más Vendidos
+                        </a>
+                        <a href="/html/Productos.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-box"></i> Productos
+                        </a>
+                        <a href="/html/Servicios.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-concierge-bell"></i> Servicios
+                        </a>
+                        <div class="relative" id="categoriesContainer">
+                            <button id="categoriesButton" class="nav-link hover:text-lighter transition-colors duration-300">
+                                <i class="fas fa-list"></i> Categorías
+                            </button>
+                            <div id="categoriesModal" class="modal absolute bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
+                                <ul>
+                                    <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Electrónicos</a></li>
+                                    <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Ropa</a></li>
+                                    <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Hogar</a></li>
+                                    <li class="mb-2"><a href="#" class="text-primary hover:text-secondary transition-colors block p-2 rounded hover:bg-gray-100">Deportes</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Barra de búsqueda compacta (oculta en móvil) -->
-                <div class="search-compact">
-                    <form class="flex items-center search-container">
-                        <input type="text" id="searchInput" placeholder="Buscar productos..."
-                            class="search-input px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary w-full text-sm">
-                        <button type="submit" class="search-btn bg-primary hover:bg-secondary text-white font-bold py-2 px-3 rounded-r-lg transition-colors duration-300">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Enlaces de usuario (ocultos en móvil) -->
-                <div class="nav-user-links">
-                    <a href="/html/sesion.html" class="auth-btn bg-lighter hover:bg-light text-primary font-semibold py-2 px-3 rounded-lg transition-all duration-300 text-sm">
-                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
-                    </a>
-                    
-                    <div class="relative" id="profileContainer">
-                        <button id="profileButton" class="nav-link hover:text-lighter transition-colors duration-300">
-                            <i class="fas fa-user"></i> Perfil
-                        </button>
-                        <div id="profileModal" class="profile-modal absolute right-0 bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
-                            <ul>
-                                <li class="mb-2">
-                                    <a href="/html/perfil.html" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
-                                        <i class="fas fa-user-circle mr-2"></i>Mi Perfil
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
-                                        <i class="fas fa-cog mr-2"></i>Configuraciones
-                                    </a>
-                                </li>
-                                <li class="mb-2">
-                                    <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
-                                        <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Barra de búsqueda compacta (oculta en móvil) -->
+                    <div class="search-compact">
+                        <form class="flex items-center search-container">
+                            <input type="text" id="searchInput" placeholder="Buscar productos..."
+                                class="search-input px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary w-full text-sm">
+                            <button type="submit" class="search-btn bg-primary hover:bg-secondary text-white font-bold py-2 px-3 rounded-r-lg transition-colors duration-300">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
-                    
-                    <a href="/html/Carrito.html" class="nav-link hover:text-lighter transition-colors duration-300">
-                        <i class="fas fa-shopping-cart"></i> Carrito
-                    </a>
-                    
-                    <a href="#" class="nav-link hover:text-lighter transition-colors duration-300">
-                        <i class="fas fa-question-circle"></i> Ayuda
-                    </a>
-                </div>
 
-                <!-- Botón de menú móvil -->
-                <button id="mobileMenuBtn" class="lg:hidden nav-link">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Menú móvil -->
-        <div id="mobileMenu" class="mobile-menu hidden lg:hidden mt-4 p-4 rounded-lg">
-            <div class="flex flex-col space-y-2">
-                <!-- Barra de búsqueda móvil -->
-                <div class="border-b border-white/20 pb-3 mb-3">
-                    <form class="flex items-center">
-                        <input type="text" placeholder="Buscar productos..." class="flex-1 px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none">
-                        <button type="submit" class="bg-primary hover:bg-secondary text-white py-2 px-3 rounded-r-lg transition-colors duration-300">
-                            <i class="fas fa-search"></i>
+                    <!-- Enlaces de usuario (ocultos en móvil) -->
+                    <div class="nav-user-links">
+                        <button id="loginBtn" class="auth-btn bg-lighter hover:bg-light text-primary font-semibold py-2 px-3 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                         </button>
-                    </form>
-                </div>
+                        
+                        <div class="relative" id="profileContainer">
+                            <button id="profileButton" class="nav-link hover:text-lighter transition-colors duration-300">
+                                <i class="fas fa-user"></i> Perfil
+                            </button>
+                            <div id="profileModal" class="profile-modal absolute right-0 bg-white p-4 rounded-lg shadow-lg w-48 mt-2 hidden z-50">
+                                <ul>
+                                    <li class="mb-2">
+                                        <a href="/html/perfil.html" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                            <i class="fas fa-user-circle mr-2"></i>Mi Perfil
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                            <i class="fas fa-cog mr-2"></i>Configuraciones
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#" class="profile-modal-item text-primary hover:text-secondary transition-colors block p-2 rounded">
+                                            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="/html/Carrito.html" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-shopping-cart"></i> Carrito
+                        </a>
+                        
+                        <a href="#" class="nav-link hover:text-lighter transition-colors duration-300">
+                            <i class="fas fa-question-circle"></i> Ayuda
+                        </a>
+                    </div>
 
-                <!-- Enlaces principales móvil -->
-                <a href="#" class="mobile-menu-link text-white">
-                    <i class="fas fa-star mr-2"></i> Más Vendidos
-                </a>
-                <a href="/html/Productos.html" class="mobile-menu-link text-white">
-                    <i class="fas fa-box mr-2"></i> Productos
-                </a>
-                <a href="#" class="mobile-menu-link text-white">
-                    <i class="fas fa-concierge-bell mr-2"></i> Servicios
-                </a>
-                
-                <!-- Categorías móvil con submenu -->
-                <div class="mobile-category-container">
-                    <button id="mobileCategoriesBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
-                        <span><i class="fas fa-list mr-2"></i> Categorías</span>
-                        <i class="fas fa-chevron-down transition-transform duration-300" id="mobileCategoriesIcon"></i>
+                    <!-- Botón de menú móvil -->
+                    <button id="mobileMenuBtn" class="lg:hidden nav-link">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
-                    <div id="mobileCategoriesMenu" class="hidden ml-4 mt-2 space-y-2">
-                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                            <i class="fas fa-laptop mr-2"></i> Electrónicos
-                        </a>
-                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                            <i class="fas fa-tshirt mr-2"></i> Ropa
-                        </a>
-                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                            <i class="fas fa-home mr-2"></i> Hogar
-                        </a>
-                        <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                            <i class="fas fa-running mr-2"></i> Deportes
-                        </a>
-                    </div>
                 </div>
+            </div>
 
-                <!-- Separador -->
-                <div class="border-t border-white/20 pt-3 mt-3">
+            <!-- Menú móvil -->
+            <div id="mobileMenu" class="mobile-menu hidden lg:hidden mt-4 p-4 rounded-lg">
+                <div class="flex flex-col space-y-2">
+                    <!-- Barra de búsqueda móvil -->
+                    <div class="border-b border-white/20 pb-3 mb-3">
+                        <form class="flex items-center">
+                            <input type="text" placeholder="Buscar productos..." class="flex-1 px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none">
+                            <button type="submit" class="bg-primary hover:bg-secondary text-white py-2 px-3 rounded-r-lg transition-colors duration-300">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Enlaces principales móvil -->
                     <a href="#" class="mobile-menu-link text-white">
-                        <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
+                        <i class="fas fa-star mr-2"></i> Más Vendidos
+                    </a>
+                    <a href="/html/Productos.html" class="mobile-menu-link text-white">
+                        <i class="fas fa-box mr-2"></i> Productos
+                    </a>
+                    <a href="#" class="mobile-menu-link text-white">
+                        <i class="fas fa-concierge-bell mr-2"></i> Servicios
                     </a>
                     
-                    <!-- Perfil móvil con submenu -->
-                    <div class="mobile-profile-container">
-                        <button id="mobileProfileBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
-                            <span><i class="fas fa-user mr-2"></i> Perfil</span>
-                            <i class="fas fa-chevron-down transition-transform duration-300" id="mobileProfileIcon"></i>
+                    <!-- Categorías móvil con submenu -->
+                    <div class="mobile-category-container">
+                        <button id="mobileCategoriesBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
+                            <span><i class="fas fa-list mr-2"></i> Categorías</span>
+                            <i class="fas fa-chevron-down transition-transform duration-300" id="mobileCategoriesIcon"></i>
                         </button>
-                        <div id="mobileProfileMenu" class="hidden ml-4 mt-2 space-y-2">
+                        <div id="mobileCategoriesMenu" class="hidden ml-4 mt-2 space-y-2">
                             <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                                <i class="fas fa-user-circle mr-2"></i> Mi Perfil
+                                <i class="fas fa-laptop mr-2"></i> Electrónicos
                             </a>
                             <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                                <i class="fas fa-cog mr-2"></i> Configuraciones
+                                <i class="fas fa-tshirt mr-2"></i> Ropa
                             </a>
                             <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
-                                <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
+                                <i class="fas fa-home mr-2"></i> Hogar
+                            </a>
+                            <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                <i class="fas fa-running mr-2"></i> Deportes
                             </a>
                         </div>
                     </div>
-                    
-                    <a href="#" class="mobile-menu-link text-white">
-                        <i class="fas fa-shopping-cart mr-2"></i> Carrito
-                    </a>
-                    <a href="#" class="mobile-menu-link text-white">
-                        <i class="fas fa-question-circle mr-2"></i> Ayuda
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Contenido principal -->
-    <div class="content-spacer flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="text-4xl font-bold text-primary mb-4">¡Bienvenido a launchix!</h1>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Información de la empresa -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fas fa-shopping-bag mr-2"></i>
-                        MiTienda
-                    </h3>
-                    <p class="text-gray-200 mb-4">
-                        Tu tienda de confianza con los mejores productos y el mejor servicio al cliente.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="social-icon text-2xl">
-                            <i class="fab fa-facebook"></i>
+                    <!-- Separador -->
+                    <div class="border-t border-white/20 pt-3 mt-3">
+                        <button id="mobileLoginBtn" class="mobile-menu-link text-white">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión
+                        </button>
+                        
+                        <!-- Perfil móvil con submenu -->
+                        <div class="mobile-profile-container">
+                            <button id="mobileProfileBtn" class="mobile-menu-link text-white w-full text-left flex items-center justify-between">
+                                <span><i class="fas fa-user mr-2"></i> Perfil</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300" id="mobileProfileIcon"></i>
+                            </button>
+                            <div id="mobileProfileMenu" class="hidden ml-4 mt-2 space-y-2">
+                                <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                    <i class="fas fa-user-circle mr-2"></i> Mi Perfil
+                                </a>
+                                <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                    <i class="fas fa-cog mr-2"></i> Configuraciones
+                                </a>
+                                <a href="#" class="block text-white/80 hover:text-white py-2 px-4 rounded transition-colors">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="mobile-menu-link text-white">
+                            <i class="fas fa-shopping-cart mr-2"></i> Carrito
                         </a>
-                        <a href="#" class="social-icon text-2xl">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon text-2xl">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon text-2xl">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#" class="mobile-menu-link text-white">
+                            <i class="fas fa-question-circle mr-2"></i> Ayuda
                         </a>
                     </div>
                 </div>
+            </div>
+        </nav>
 
-                <!-- Enlaces rápidos -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="footer-link">Inicio</a></li>
-                        <li><a href="#" class="footer-link">Productos</a></li>
-                        <li><a href="#" class="footer-link">Servicios</a></li>
-                        <li><a href="#" class="footer-link">Contacto</a></li>
-                    </ul>
+        <!-- Modal de inicio de sesión -->
+        <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] hidden backdrop-blur-sm">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+                <!-- Header del modal -->
+                <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white p-6 rounded-t-2xl">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold">Iniciar Sesión</h2>
+                        <button id="closeModal" class="text-white hover:text-gray-200 transition-colors p-1 rounded-full hover:bg-white/10">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <p class="mt-2 text-white/80">Selecciona tu tipo de cuenta</p>
                 </div>
 
-                <!-- Categorías -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Categorías</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="footer-link">Electrónicos</a></li>
-                        <li><a href="#" class="footer-link">Ropa</a></li>
-                        <li><a href="#" class="footer-link">Hogar</a></li>
-                        <li><a href="#" class="footer-link">Deportes</a></li>
-                    </ul>
+                <!-- Contenido del modal -->
+                <div class="p-6 space-y-4">
+                    <!-- Opción Emprendedor -->
+                    <div class="login-option group cursor-pointer border-2 border-gray-200 rounded-xl p-4 hover:border-red-500 hover:bg-red-50 transition-all duration-300 hover:shadow-lg" data-type="emprendedor">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-100 group-hover:bg-red-200 p-3 rounded-full transition-colors">
+                                <i class="fas fa-lightbulb text-red-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800 group-hover:text-red-600 transition-colors">
+                                    Emprendedor
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Administra tu negocio y productos
+                                </p>
+                            </div>
+                            <div class="text-gray-400 group-hover:text-red-500 transition-colors">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opción Usuario -->
+                    <div class="login-option group cursor-pointer border-2 border-gray-200 rounded-xl p-4 hover:border-red-500 hover:bg-red-50 transition-all duration-300 hover:shadow-lg" data-type="usuario">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-100 group-hover:bg-red-200 p-3 rounded-full transition-colors">
+                                <i class="fas fa-user text-red-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800 group-hover:text-red-600 transition-colors">
+                                    Usuario
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Explora y compra productos
+                                </p>
+                            </div>
+                            <div class="text-gray-400 group-hover:text-red-500 transition-colors">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Contacto -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
-                    <div class="space-y-2">
-                        <p class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            123 Calle Principal, Ciudad
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-phone mr-2"></i>
-                            +57 300 123 4567
-                        </p>
-                        <p class="flex items-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            info@mitienda.com
+                <!-- Footer del modal -->
+                <div class="bg-gray-50 px-6 py-4 rounded-b-2xl">
+                    <div class="flex items-center justify-center">
+                        <p class="text-sm text-gray-600">
+                            ¿No tienes cuenta? 
+                            <a href="#" class="text-red-500 hover:text-red-600 font-medium hover:underline">Regístrate aquí</a>
                         </p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="border-t border-white/20 mt-8 pt-8 text-center">
-                <p>&copy; 2024 MiTienda. Todos los derechos reservados.</p>
+        <!-- Contenido principal -->
+        <div class="content-spacer flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-primary mb-4">¡Bienvenido a launchix!</h1>
             </div>
         </div>
-    </footer>
 
-    <script src="/html/javascript/footer.js"></script>
-    <script src="/html/javascript/navbar.js"></script>
-</body>
-</html>
+        <!-- Footer -->
+        <footer class="footer text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Información de la empresa -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            MiTienda
+                        </h3>
+                        <p class="text-gray-200 mb-4">
+                            Tu tienda de confianza con los mejores productos y el mejor servicio al cliente.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon text-2xl">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon text-2xl">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon text-2xl">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon text-2xl">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Enlaces rápidos -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="footer-link">Inicio</a></li>
+                            <li><a href="#" class="footer-link">Productos</a></li>
+                            <li><a href="#" class="footer-link">Servicios</a></li>
+                            <li><a href="#" class="footer-link">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categorías -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Categorías</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="footer-link">Electrónicos</a></li>
+                            <li><a href="#" class="footer-link">Ropa</a></li>
+                            <li><a href="#" class="footer-link">Hogar</a></li>
+                            <li><a href="#" class="footer-link">Deportes</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                        <div class="space-y-2">
+                            <p class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                123 Calle Principal, Ciudad
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-phone mr-2"></i>
+                                +57 300 123 4567
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope mr-2"></i>
+                                info@mitienda.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                    <p>&copy; 2024 MiTienda. Todos los derechos reservados.</p>
+                </div>
+            </div>
+            
+        </footer>
+        <script src="/html/javascript/sesion.js"></script>
+        <script src="/html/javascript/footer.js"></script>
+        <script src="/html/javascript/navbar.js"></script>
+        
+    </body>
+    </html>
